@@ -6,13 +6,9 @@ const server = express()
 
 server.use(express.json())
 
-server.get('/hello', (req, res) =>{
-    res.json({message: 'hello' })
-    })
-
 server.get('/api/users', async (req, res) =>{
     try {
-        const users = await User.findAll()
+        const users = await User.find()
         res.json(users)
     } catch(err) {
         res.status(500).json({ 

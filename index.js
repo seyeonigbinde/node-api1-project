@@ -1,21 +1,12 @@
-// const server = require('./api/server');
-
-// // START YOUR SERVER HERE
-// server.listen(6000, () => {
-//     console.log ('server listening on 6000')
-// })
-
 require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const path = require('path')
 
-// const server = express()
 const server = require('./api/server');
 
 server.use(express.json())
 server.use(cors())
-// server.use(express.static(path.join(__dirname, 'client/build'))) // static assets
 
 console.log(process.env.USER) 
 console.log(process.env.SHELL)
@@ -27,11 +18,6 @@ if (process.env.NODE_ENV === 'production') {
 const PORT = process.env.PORT || 6000
 
 console.log('port is -> ', PORT)
-
-// server.get('/', (req, res) => {
-//   // sending back index.html
-//   res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
-// })
 
 server.get('/api', (req, res) => {
   res.json({ message: `${process.env.COHORT} ROCKS` })
